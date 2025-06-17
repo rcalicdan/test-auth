@@ -99,14 +99,25 @@ body {
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
-/* Main Content Styles */
 .auth-section {
-    flex: 1;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem 1rem;
-    margin-top: 80px;
+}
+
+.auth-section .container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-section .row {
+    margin: 0;
+}
+
+.auth-section .col-12 {
+    padding: 0;
 }
 
 .auth-card {
@@ -181,9 +192,37 @@ body {
     font-weight: 500;
 }
 
+/* Fix for validation messages in password fields */
+.form-group .invalid-feedback {
+    display: block !important;
+    margin-top: 0.5rem;
+    width: 100%;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.password-container + .invalid-feedback {
+    display: block !important;
+    margin-top: 0.5rem;
+}
+
+/* Ensure invalid state is visible */
+.form-control.is-invalid {
+    border-color: var(--danger-color) !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
 /* Password Input Container */
 .password-container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.password-container .form-control {
+    padding-right: 3rem;
+    /* Make room for toggle button */
 }
 
 .password-toggle {
@@ -201,6 +240,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5;
+    width: 36px;
+    height: 36px;
 }
 
 .password-toggle:hover {
@@ -356,20 +398,20 @@ body {
         margin: 1rem;
         padding: 2rem;
     }
-    
+
     .auth-title {
         font-size: 1.5rem;
     }
-    
+
     .register-title {
         font-size: 1.75rem;
     }
-    
+
     .navbar-nav {
         text-align: center;
         margin-top: 1rem;
     }
-    
+
     .nav-item {
         margin: 0.25rem 0;
     }
@@ -380,7 +422,7 @@ body {
         padding: 1.5rem;
         margin: 0.5rem;
     }
-    
+
     .auth-section {
         padding: 1rem 0.5rem;
     }
@@ -392,6 +434,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

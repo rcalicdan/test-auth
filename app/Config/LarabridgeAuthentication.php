@@ -55,7 +55,7 @@ class LarabridgeAuthentication extends BaseConfig
      * Email verification settings
      */
     public array $emailVerification = [
-        'required' => false,
+        'required' => true,
         'tokenExpiry' => 86400, // 24 hours in seconds
     ];
 

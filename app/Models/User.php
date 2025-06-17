@@ -41,4 +41,9 @@ class User extends Model
             'email_verified_at' => 'datetime',
         ];
     }
+
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

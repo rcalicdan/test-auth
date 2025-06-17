@@ -33,7 +33,7 @@ class AuthController extends BaseController
         $remember = $this->request->getPost('remember') ? true : false;
 
         if (Auth::attempt($credentials, $remember)) {
-            return redirect()->to('/');
+            return redirect()->to('/welcome');
         }
 
         return redirect()->back()->withInput()->with('error', 'Invalid Email or Password');
