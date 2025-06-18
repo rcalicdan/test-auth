@@ -3,7 +3,6 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
-use Illuminate\Support\Carbon;
 
 /**
  * Authentication Configuration
@@ -23,12 +22,12 @@ class LarabridgeAuthentication extends BaseConfig
     /**
      * Password Reset View Path
      */
-    public string $passwordResetViewPath = AUTH_EMAIL_PATH. '/password-reset.php';
+    public string $passwordResetViewPath = 'emails/password-reset';
 
     /**
      * Default redirect after login
      */
-    public string $loginRedirect = '/dashboard';
+    public string $filterLoginAuthRedirect = '/dashboard';
 
     /**
      * Default redirect after logout
@@ -38,12 +37,12 @@ class LarabridgeAuthentication extends BaseConfig
     /**
      * Login page URL
      */
-    public string $loginUrl = '/login';
+    public string $filterLoginAuthUrl = '/login';
 
     /**
      * Email Verfification page URL
      */
-    public string $emailVerficationUrl = '/email/verify';
+    public string $emailVerificationUrl = '/email/verify';
 
     /**
      * Password reset settings
@@ -56,8 +55,8 @@ class LarabridgeAuthentication extends BaseConfig
      * Email verification settings
      */
     public array $emailVerification = [
-        'required' => true,
-        'tokenExpiry' => 60 * 60 * 12, 
+        'required' => false,
+        'tokenExpiry' => 86400, // 24 hours in seconds
     ];
 
     /**
@@ -65,7 +64,7 @@ class LarabridgeAuthentication extends BaseConfig
      */
     public array $rememberMe = [
         'enabled' => false,
-        'tokenExpiry' => 60 * 60 * 24 * 30, 
+        'tokenExpiry' => 2592000, // 30 days in seconds
         'cookieName' => 'remember_token',
         'cookieSecure' => true,
         'cookieHttpOnly' => true,
@@ -80,11 +79,23 @@ class LarabridgeAuthentication extends BaseConfig
     ];
 
     /**
-     * Security settings
+     * Password hashing settings
      */
-    public array $security = [
-        'hashAlgorithm' => PASSWORD_ARGON2ID,
-        'requireEmailVerification' => true,
+    public array $passwordHash = [
+        'driver' => 'bcrypt',
+        'bcrypt' => [
+            'rounds' => 12,
+        ],
+        'argon2i' => [
+            'memory' => 65536,
+            'time' => 4,
+            'threads' => 3,
+        ],
+        'argon2id' => [
+            'memory' => 65536,
+            'time' => 4,
+            'threads' => 3,
+        ],
     ];
 
     /**
