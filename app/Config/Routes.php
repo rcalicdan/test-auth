@@ -13,7 +13,9 @@ $routes->get('/', function () {
 });
 
 $routes->get('welcome', [HomeController::class, 'index'], ['as' => 'welcome', 'filter' => ['auth', 'email_verified']]);
-$routes->get('email-required', [EmailVerficationController::class, 'index'], ['as' => 'email.required']);
+$routes->get('email-required', [EmailVerficationController::class, 'index'], ['as' => 'email.required', 'filter' => 'auth']);
+$routes->post('email/verify', [EmailVerficationController::class, 'send'], ['as' => 'email.verify.send']);
+$routes->get('email/verify/(:segment)', [EmailVerficationController::class, 'verify'], ['as' => 'email.verify', 'filter' => 'auth']);
 
 $routes->group('',  function (RouteCollection $routes) {
     $routes->get('login', [AuthController::class, 'showLoginPage'], ['as' => 'login']);

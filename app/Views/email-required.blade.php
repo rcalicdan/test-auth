@@ -4,7 +4,16 @@
 
 @section('content')
     <div class="text-center">
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
         <p class="alert alert-warning">Please verify your email address to access all features.</p>
-        <a class="btn btn-primary" href="{{ route('email.verify.resend') }}">Resend Verification Email</a>
+        <form action="{{ route('email.verify.send') }}" method="POST" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-primary">Resend Verification Email</button>
+        </form>
     </div>
 @endsection

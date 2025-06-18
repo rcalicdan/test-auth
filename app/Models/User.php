@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Rcalicdan\Ci4Larabridge\Models\Model;
 
 use Rcalicdan\Ci4Larabridge\Traits\Authentication\Authenticable;
@@ -45,5 +46,11 @@ class User extends Model
     public function getFullNameAttribute(): string
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function getEmailVerificationTokenAttribute(): string
+    {
+        return (string) DB::table('email_verification_tokens')->select('token')
+        ->where('email', "=", $this->email);
     }
 }

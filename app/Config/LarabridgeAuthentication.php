@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
+use Illuminate\Support\Carbon;
 
 /**
  * Authentication Configuration
@@ -17,12 +18,12 @@ class LarabridgeAuthentication extends BaseConfig
     /**
      * Email Verification View Path
      */
-    public string $emailVerificationViewPath = AUTH_EMAIL_PATH.'email-verification.php';
+    public string $emailVerificationViewPath = 'emails/email-verification';
 
     /**
      * Password Reset View Path
      */
-    public string $passwordResetViewPath = AUTH_EMAIL_PATH.'password-reset.php';
+    public string $passwordResetViewPath = AUTH_EMAIL_PATH. '/password-reset.php';
 
     /**
      * Default redirect after login
@@ -56,7 +57,7 @@ class LarabridgeAuthentication extends BaseConfig
      */
     public array $emailVerification = [
         'required' => true,
-        'tokenExpiry' => 86400, // 24 hours in seconds
+        'tokenExpiry' => 60 * 60 * 12, 
     ];
 
     /**
@@ -64,7 +65,7 @@ class LarabridgeAuthentication extends BaseConfig
      */
     public array $rememberMe = [
         'enabled' => false,
-        'tokenExpiry' => 2592000, // 30 days in seconds
+        'tokenExpiry' => 60 * 60 * 24 * 30, 
         'cookieName' => 'remember_token',
         'cookieSecure' => true,
         'cookieHttpOnly' => true,
