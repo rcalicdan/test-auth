@@ -2,6 +2,7 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\EmailVerficationController;
+use App\Controllers\ForgotPasswordController;
 use App\Controllers\HomeController;
 use CodeIgniter\Router\RouteCollection;
 
@@ -13,6 +14,7 @@ $routes->get('/', function () {
 });
 
 $routes->get('welcome', [HomeController::class, 'index'], ['as' => 'welcome', 'filter' => ['auth', 'email_verified']]);
+
 $routes->get('email-required', [EmailVerficationController::class, 'index'], ['as' => 'email.required', 'filter' => 'auth']);
 $routes->post('email/verify', [EmailVerficationController::class, 'send'], ['as' => 'email.verify.send']);
 $routes->get('email/verify/(:segment)', [EmailVerficationController::class, 'verify'], ['as' => 'email.verify', 'filter' => 'auth']);
@@ -27,3 +29,12 @@ $routes->group('',  function (RouteCollection $routes) {
 });
 
 $routes->post('logout', [AuthController::class, 'logout'], ['as' => 'logout.post']);
+
+$routes->group('forgot-password', function (RouteCollection $routes) {
+    $routes->get('', [ForgotPasswordController::class, 'index'], ['as' => 'forgot-password']);
+    $routes->post('', [ForgotPasswordController::class, 'send'], ['as' => 'forgot-password.post']);
+    $routes->get('reset/(:segment)', [ForgotPasswordController::class, 'show'], ['as' => 'password.reset']);
+    $routes->put('reset', [ForgotPasswordController::class, 'update'], ['as' => 'password.update']);
+});
+
+$routes->get('password/reset/(:segment)', [ForgotPasswordController::class, 'show'], ['as' => 'password.reset.get']);

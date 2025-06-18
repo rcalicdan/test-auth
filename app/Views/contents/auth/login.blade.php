@@ -90,7 +90,7 @@
                                     </div>
                                 @enderror
                                 <div class="forgot-password">
-                                    <a href="{{ route_to('password.request') }}" class="auth-link">
+                                    <a href="{{ route_to('forgot-password') }}" class="auth-link">
                                         <i class="fas fa-key me-1"></i>Forgot Password?
                                     </a>
                                 </div>
