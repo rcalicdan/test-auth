@@ -44,7 +44,7 @@
                                 <label for="password" class="form-label">New Password</label>
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
-                                 autocomplete="new-password">
+                                    autocomplete="new-password">
 
                                 @error('password')
                                     <div class="invalid-feedback">
@@ -55,8 +55,15 @@
 
                             <div class="mb-3">
                                 <label for="confirm_password" class="form-label">Confirm Password</label>
-                                <input id="confirm_password" type="password" class="form-control"
+                                <input id="confirm_password" type="password" 
+                                    class="form-control @error('confirm_password') is-invalid @enderror"
                                     name="confirm_password" autocomplete="new-password">
+                                
+                                @error('confirm_password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="d-grid">
