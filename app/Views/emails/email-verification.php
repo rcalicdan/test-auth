@@ -182,7 +182,7 @@
         
         <div class="email-body">
             <div class="greeting">
-                Hello <?= esc($user->name ?? $user->username ?? 'there') ?>!
+                Hello <?= esc($user->name ?? $user->full_name ?? 'there') ?>!
             </div>
             
             <div class="message">

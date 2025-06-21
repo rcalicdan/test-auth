@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use Illuminate\Support\Facades\DB;
 use Rcalicdan\Ci4Larabridge\Facades\Auth;
+use Rcalicdan\FiberAsync\AsyncEventLoop;
 
 class EmailVerficationController extends BaseController
 {
@@ -16,8 +17,11 @@ class EmailVerficationController extends BaseController
     public function send()
     {
         $user = auth()->user();
-        Auth::sendEmailVerification($user);
 
+        task(function () use ($user) {
+            Auth::sendEmailVerification($user);
+        });
+       
         return redirect()->back()->with('success', "Email Verfication sent to {$user->email}");
     }
 

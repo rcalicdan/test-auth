@@ -42,7 +42,7 @@ class LarabridgeAuthentication extends BaseConfig
     /**
      * Email Verfification page URL
      */
-    public string $emailVerificationUrl = '/email/verify';
+    public string $emailVerificationUrl = '/email-required';
 
     /**
      * Password reset settings
@@ -55,7 +55,7 @@ class LarabridgeAuthentication extends BaseConfig
      * Email verification settings
      */
     public array $emailVerification = [
-        'required' => false,
+        'required' => true,
         'tokenExpiry' => 86400, // 24 hours in seconds
     ];
 

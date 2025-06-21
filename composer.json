@@ -12,7 +12,8 @@
     "require": {
         "php": "^8.1",
         "codeigniter4/framework": "^4.0",
-        "rcalicdan/ci4-larabridge": "dev-refactor-email-verification"
+        "rcalicdan/ci4-larabridge": "dev-refactor-email-verification",
+        "rcalicdan/fiber-async": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
