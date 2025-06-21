@@ -36,7 +36,13 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('password.update') }}">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route_to('password.update', $token) }}">
                             @csrf
                             @method('PUT')
 

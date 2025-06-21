@@ -27,10 +27,12 @@ class ForgotPasswordController extends BaseController
 
     public function show()
     {
-        return blade_view('contents.auth.reset-password');
+        $token = service('uri')->getSegment(3);
+
+        return blade_view('contents.auth.reset-password', compact('token'));
     }
 
-    public function update()
+    public function update($token)
     {
         $token = service('uri')->getSegment(3);
 
@@ -39,9 +41,11 @@ class ForgotPasswordController extends BaseController
             'confirm_password' => ['required', 'string', 'same:password'],
         ]);
 
-        log_message('error', "confirm_password:" . $this->request->getPost('confirm_password') ?? "No value");
-
-        Auth::resetPassword($token, $data->password);
+        if(! Auth::resetPassword($token, $data->password)) {
+            log_message('error', "token: $token");
+            log_message('error', "Password reset failed for token: $token");
+            return redirect()->back()->with('error', 'Invalid or expired token.');
+        }
 
         return redirect()->route('login')->with('success', 'Password reset successfully.');
     }

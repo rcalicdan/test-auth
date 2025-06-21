@@ -34,7 +34,7 @@ $routes->group('forgot-password', function (RouteCollection $routes) {
     $routes->get('', [ForgotPasswordController::class, 'index'], ['as' => 'forgot-password']);
     $routes->post('', [ForgotPasswordController::class, 'send'], ['as' => 'forgot-password.post']);
     $routes->get('reset/(:segment)', [ForgotPasswordController::class, 'show'], ['as' => 'password.reset']);
-    $routes->put('reset', [ForgotPasswordController::class, 'update'], ['as' => 'password.update']);
+    $routes->put('reset/(:segment)', [ForgotPasswordController::class, 'update'], ['as' => 'password.update']);
 });
 
 $routes->get('password/reset/(:segment)', [ForgotPasswordController::class, 'show'], ['as' => 'password.reset.get']);
