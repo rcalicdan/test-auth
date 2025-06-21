@@ -27,7 +27,7 @@ class LarabridgeAuthentication extends BaseConfig
     /**
      * Default redirect after login
      */
-    public string $filterLoginAuthRedirect = '/dashboard';
+    public string $filterLoginAuthRedirect = '/welcome';
 
     /**
      * Default redirect after logout

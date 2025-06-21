@@ -21,15 +21,18 @@ class EmailVerficationController extends BaseController
         task(function () use ($user) {
             Auth::sendEmailVerification($user);
         });
-       
+
         return redirect()->back()->with('success', "Email Verfication sent to {$user->email}");
     }
 
     public function verify($token)
     {
         $token = service('uri')->getSegment(3);
-        Auth::verifyEmail($token);
 
-        return redirect()->route('welcome');
+        if (Auth::verifyEmail($token)) {
+            return redirect()->route('welcome');
+        }
+
+        return redirect()->to('/login')->with('error', 'Invalid or expired verification link.');
     }
 }
