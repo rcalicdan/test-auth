@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\AuthController;
+use App\Controllers\BackgroundWorkerController;
 use App\Controllers\EmailVerficationController;
 use App\Controllers\ForgotPasswordController;
 use App\Controllers\HomeController;
@@ -12,6 +13,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', function () {
     return redirect()->route('login');
 });
+$routes->get('test-async', [EmailVerficationController::class, 'testAsync']);
+
+$routes->post('bg_worker.php', [BackgroundWorkerController::class, 'index']);
 
 $routes->get('welcome', [HomeController::class, 'index'], ['as' => 'welcome', 'filter' => ['auth', 'email_verified']]);
 

@@ -5,6 +5,7 @@ namespace Config;
 use CodeIgniter\Events\Events;
 use CodeIgniter\Exceptions\FrameworkException;
 use CodeIgniter\HotReloader\HotReloader;
+use Rcalicdan\FiberAsync\Background;
 
 /*
  * --------------------------------------------------------------------
@@ -28,6 +29,9 @@ Events::on('pre_system', static function (): void {
     service('eloquent');
     // Load the authentication configuration
     service('authorization');
+    service('queue');
+    service('queueService');
+    service('bus');
 });
 
 Events::on('pre_system', static function (): void {
@@ -40,7 +44,7 @@ Events::on('pre_system', static function (): void {
             ob_end_flush();
         }
 
-        ob_start(static fn ($buffer) => $buffer);
+        ob_start(static fn($buffer) => $buffer);
     }
 
     /*
