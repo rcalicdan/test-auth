@@ -85,6 +85,7 @@ phpunit
 # Composer
 #-------------------------
 vendor/
+composer.lock
 
 #-------------------------
 # IDE / Development Files
@@ -124,3 +125,5 @@ _modules/*
 
 /results/
 /phpunit*.xml
+
+

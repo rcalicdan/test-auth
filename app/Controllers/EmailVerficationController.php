@@ -3,12 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Jobs\SendVerificationEmailJob;
-use App\Libraries\BackgroundTasks;
-use Illuminate\Support\Facades\DB;
+use App\Jobs\SendEmailVerfication;
 use Rcalicdan\Ci4Larabridge\Facades\Auth;
-use Rcalicdan\FiberAsync\AsyncEventLoop;
-use Rcalicdan\FiberAsync\Background;
 
 class EmailVerficationController extends BaseController
 {
@@ -20,9 +16,7 @@ class EmailVerficationController extends BaseController
     public function send()
     {
         $user = auth()->user();
-        
-        SendVerificationEmailJob::dispatch();
-
+        SendEmailVerfication::dispatch($user->id);
         return redirect()->back()->with('success', "Email Verification sent to {$user->email}");
     }
 

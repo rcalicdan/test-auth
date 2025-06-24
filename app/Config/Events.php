@@ -25,9 +25,7 @@ use Rcalicdan\FiberAsync\Background;
  */
 
 Events::on('pre_system', static function (): void {
-    // Load the Eloquent configuration
     service('eloquent');
-    // Load the authentication configuration
     service('authorization');
     service('queue');
     service('queueService');
