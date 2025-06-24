@@ -67,7 +67,7 @@ class LarabridgeQueue extends BaseConfig
      */
     public array $failed = [
         'driver' => 'database',
-        'database' => null, 
+        'database' => 'default', 
         'table' => 'failed_jobs',
     ];
 

@@ -3340,12 +3340,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rcalicdan/ci4-larabridge.git",
-                "reference": "22aad9fa31df07b68b5f065c517102f8b62b46c2"
+                "reference": "72ad059d71910857706ceea17decaecf7321c0ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rcalicdan/ci4-larabridge/zipball/22aad9fa31df07b68b5f065c517102f8b62b46c2",
-                "reference": "22aad9fa31df07b68b5f065c517102f8b62b46c2",
+                "url": "https://api.github.com/repos/rcalicdan/ci4-larabridge/zipball/72ad059d71910857706ceea17decaecf7321c0ea",
+                "reference": "72ad059d71910857706ceea17decaecf7321c0ea",
                 "shasum": ""
             },
             "require": {
@@ -3411,7 +3411,7 @@
                 "issues": "https://github.com/rcalicdan/ci4-larabridge/issues",
                 "source": "https://github.com/rcalicdan/ci4-larabridge"
             },
-            "time": "2025-06-24T06:38:05+00:00"
+            "time": "2025-06-24T09:17:23+00:00"
         },
         {
             "name": "rcalicdan/fiber-async",

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Jobs\SendEmailVerfication;
+use App\Jobs\TestFailJob;
 use Rcalicdan\Ci4Larabridge\Facades\Auth;
 
 class EmailVerficationController extends BaseController
@@ -16,7 +17,7 @@ class EmailVerficationController extends BaseController
     public function send()
     {
         $user = auth()->user();
-        SendEmailVerfication::dispatch($user->id);
+        TestFailJob::dispatch();
         return redirect()->back()->with('success', "Email Verification sent to {$user->email}");
     }
 

@@ -102,7 +102,7 @@ class LarabridgeAuthentication extends BaseConfig
      * Email settings
      */
     public array $email = [
-        'fromEmail' => null, // Will default to noreply@{domain}
-        'fromName' => null,  // Will default to 'Your Application'
+        'fromEmail' => 'noreply@example.com', 
+        'fromName' => 'Example',  
     ];
 }
