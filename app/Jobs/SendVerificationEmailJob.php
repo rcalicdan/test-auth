@@ -7,13 +7,13 @@ use Rcalicdan\Ci4Larabridge\Queue\Job;
 
 class SendVerificationEmailJob extends Job
 {
-    public function __construct()
-    {
-       //
-    }
+   public function __construct()
+   {
+      //
+   }
 
-    public function handle(): void
-    {
-       Auth::sendEmailVerification(auth()->user());
-    }
+   public function handle(): void
+   {
+      Auth::sendEmailVerification(auth()->user());
+   }
 }
